@@ -1,7 +1,8 @@
 package com.bridgelabz;
-
+//creating class Contacts
 public class Contacts {
     private String firstName, lastName, address, city, state, zipCode, contactNumber, emailAddress;
+    //Constructor for contacts
     public void Contacts() {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -12,6 +13,7 @@ public class Contacts {
         this.contactNumber = contactNumber;
         this.emailAddress = emailAddress;
     }
+    //Setters and Getters
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

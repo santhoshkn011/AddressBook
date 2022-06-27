@@ -1,7 +1,14 @@
 package com.bridgelabz;
 //creating class Contacts
 public class Contacts {
-    private String firstName, lastName, address, city, state, zipCode, contactNumber, emailAddress;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String city;
+    private String state;
+    private String zipCode;
+    private String contactNumber;
+    private String emailAddress;
     //Constructor for contacts
     public void Contacts() {
         this.firstName = firstName;
@@ -14,11 +21,11 @@ public class Contacts {
         this.emailAddress = emailAddress;
     }
     //Setters and Getters
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
     public String getFirstName() {
         return firstName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -65,7 +72,7 @@ public class Contacts {
 //overwritten toString
     public String toString() {
         return ("FirstName: " + firstName + "\nLastName: " + lastName + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state +
-                "\nZip Code: " + zipCode + "\nContact Number: " + contactNumber + "\nEmail Address: " + emailAddress);
+                "\nZip Code: " + zipCode + "\nContact Number: " + contactNumber + "\nEmail Address: " + emailAddress + "\n");
     }
 }
 

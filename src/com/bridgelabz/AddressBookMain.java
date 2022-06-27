@@ -1,5 +1,5 @@
 /*
-Ability to delete a person using person's name.
+Ability to add multiple person to Address Book
  */
 package com.bridgelabz;
 
@@ -106,33 +106,42 @@ public class AddressBookMain {
     //Method to display the Array List
     public static void displayContacts() {
         for (Contacts contactsDetailsInfo : contactDetails) {
+            System.out.println("----------------------------------------");
             System.out.println(contactsDetailsInfo);
+            System.out.println("----------------------------------------");
         }
     }
     public void deleteContact() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the first name of the person to be deleted");
-        String firstName = sc.next();
-        Iterator<Contacts> iterator = contactDetails.listIterator();
-        while (iterator.hasNext()) {
-
-            Contacts info = iterator.next();
-
-            if (firstName.equals(info.getFirstName())) {
-                contactDetails.remove(info);
-                System.out.printf("%s Contact removed", firstName + "\n");
-            } else
-                System.out.println("Contact not found\n");
+        System.out.println("\nEnter First Name for which you want to delete contact: ");
+        String firstname = sc.next(); //user input
+        Iterator<Contacts> removeContact = contactDetails.iterator();
+        /*  Checking the next element where
+         *   condition holds true till there is single element
+         *   in the List using hasNext() method
+         */
+        while (removeContact.hasNext()){
+            /*  Move cursor to next element */
+            Contacts nextElement = removeContact.next(); //object for Contacts class
+            if (nextElement.getFirstName().equals(firstname) ) {
+                removeContact.remove();
+                System.out.println("Contact is removed!");
+                break;
+            }
+            else {
+                System.out.println("Contact not found.");
+            }
         }
     }
     //Main Method Starts
     public static void main (String[]args){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to Address Book Program!)"); //Welcome Message
+        System.out.println("Welcome to Address Book Program!"); //Welcome Message
         AddressBookMain addressDetails = new AddressBookMain();
         int chooseNumber;
         //do while loop
         do {
+            System.out.println("----------------------------------------");
             System.out.println("Enter the number to perform an action: ");
             System.out.println("1. Add Details \n2. Edit Details \n3. Delete Details \n4. Display Details \n5. exit ");
             chooseNumber = sc.nextInt();

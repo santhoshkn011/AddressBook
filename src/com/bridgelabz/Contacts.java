@@ -1,5 +1,5 @@
 package com.bridgelabz;
-//creating class Contacts
+
 public class Contacts {
     private String firstName;
     private String lastName;
@@ -69,11 +69,10 @@ public class Contacts {
     public String getEmailAddress() {
         return emailAddress;
     }
-//overwritten toString
+    //overwritten toString
     public String toString() {
         return ("FirstName: " + firstName + "\nLastName: " + lastName + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state +
                 "\nZip Code: " + zipCode + "\nContact Number: " + contactNumber + "\nEmail Address: " + emailAddress + "\n");
     }
 }
-
 

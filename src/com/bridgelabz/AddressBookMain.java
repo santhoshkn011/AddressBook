@@ -1,16 +1,13 @@
 /*
-Refactor to add multiple Address Book to the System. Each Address Book has a unique Name
+ Ability to ensure there is no Duplicate Entry of the same Person in a particular Address Book.
  */
 package com.bridgelabz;
 
-public class AddressBookMain {
-    static CollectionBook addressBooks = new CollectionBook();
-    //Main Method
-    public static void main(String args[]) {
-        System.out.println("Welcome to Address Book Program!"); //Welcome Message
-        CollectionBook.addressBooks(); //calling method from CollectionBook Class
-        CollectionBook.chooseOption();
-        System.out.println("\nAddress books and the current contact Details are: ");
-        System.out.println(addressBooks.book);
+public class AddressBookMain extends Operations{
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Address book System project: ");
+        Operations operations = new Operations();
+        System.out.println("--------------------------Address Book-------------------------");
+        AddressBook(operations);
     }
 }

@@ -1,5 +1,7 @@
 /*
- Ability to search Person in a City or State across the multiple AddressBook
+ Ability to sort the entries in the
+address book alphabetically by
+Person’s name
  */
 package com.bridgelabz;
 

@@ -10,7 +10,8 @@ public class Operations {
     static HashMap<String, ArrayList<Contacts>> hashmap = new HashMap<>();
     // method For Adding Multiple Address Book
     public static void AddressBook(Operations operations) {
-        System.out.println("Select the Choice:\n1. Add Address Book \n2. Search City or State.");
+        System.out.println("Select the Choice:\n1. Add Address Book \n" +
+                "2. Search Contact by State\n3. Search Contact by City\n4. Count by City\n5. Count by State\n6. exit");
         int ch = sc.nextInt();
         switch (ch) {
             case 1:
@@ -28,66 +29,69 @@ public class Operations {
                         hashmap.put(AddressBookName,contactDetails1);
                     }
                     System.out.println("AddressBook Added" + hashmap + " ");
-                    System.out.println("1. Add New Address Book \n2. Search Contact by City or State\n3. Search Contact by State \n" +
-                            "4. Search Contact by City\n5. Exit");
+                    System.out.println("1. Add New Address Book \n2. Search Contact by State\n" +
+                            "3. Search Contact by City\n4. Count by City\n5. Count by State\n6. exit");
                     selection = sc.nextInt();
                 } while (selection == 1);
             case 2:
-                System.out.println("Enter City or State name to search ");
-                String name = sc.next();
-                SearchInMultipleBook(name);
-                break;
-            case 3:
                 operations.searchByState();
                 break;
-            case 4:
+            case 3:
                 operations.searchByCity();
+                break;
+            case 4:
+                operations.countByCity();
+                break;
+            case 5:
+                operations.countByState();
                 break;
             default:
         }
     }
     //Search person in a Multiple Address book.
-    private static List<Contacts> SearchInMultipleBook(String name) {
-        for (Map.Entry<String, ArrayList<Contacts>> entry : hashmap.entrySet()) {
-            for (Contacts contacts : entry.getValue()) {
-                if (contacts.getCity().equals(name) || contacts.getState().equals(name)) {
-                    System.out.println("\nAddress Book Name :" + entry.getKey());
-                    System.out.println("First Name :" + contacts.getFirstName());
-                    System.out.println("Last Name :" + contacts.getLastName());
-                    System.out.println("Email-ID :" + contacts.getEmail());
-                    System.out.println("Address :" + contacts.getAddress());
-                    System.out.println("City Name :" + contacts.getCity());
-                    System.out.println("Contact Number :" + contacts.getContactNo());
-                }
-            }
-        }
-        System.out.printf("No record found:");
-        return null;
-    }
-    public void SearchInSingleBook(ArrayList<Contacts> contactdetails){
-        System.out.println("Enter name of city or state to search");
-        String name=sc.next();
-        ArrayList<Contacts> contacts=new ArrayList<>();
-        for (Contacts contact:contactdetails){
-            if(contact.getCity().equals(name)||contact.getState().equals(name))
-            {
-                contacts.add(contact);
-            }
-            System.out.println(contact);
-        }
-    }
+//    private static List<Contacts> SearchInMultipleBook(String name) {
+//        for (Map.Entry<String, ArrayList<Contacts>> entry : hashmap.entrySet()) {
+//            for (Contacts contacts : entry.getValue()) {
+//                if (contacts.getCity().equals(name) || contacts.getState().equals(name)) {
+//                    System.out.println("\nAddress Book Name :" + entry.getKey());
+//                    System.out.println("First Name :" + contacts.getFirstName());
+//                    System.out.println("Last Name :" + contacts.getLastName());
+//                    System.out.println("Email-ID :" + contacts.getEmail());
+//                    System.out.println("Address :" + contacts.getAddress());
+//                    System.out.println("City Name :" + contacts.getCity());
+//                    System.out.println("Contact Number :" + contacts.getContactNo());
+//                }
+//            }
+//        }
+//        System.out.printf("No record found:");
+//        return null;
+//    }
     //Using Java Stream
     public void searchByCity() {
-        System.out.println("Enter the city:");
+        System.out.println("Enter city Name:");
         String city = sc.next();
         contactDetails.stream().filter(contacts -> contacts.getCity().equalsIgnoreCase(city)).forEach(contacts -> System.out.println(contacts));
     }
     public void searchByState() {
-        System.out.println("Enter the State:");
+        System.out.println("Enter State Name:");
         String state = sc.next();
         contactDetails.stream().filter(contacts -> contacts.getState().equalsIgnoreCase(state)).forEach(contacts -> System.out.println(contacts));
     }
- /*
+    public void countByCity() {
+        System.out.println("Enter the city Name:");
+        String city = sc.next();
+        contactDetails.stream().filter(contacts -> contacts.getCity().equalsIgnoreCase(city)).forEach(contacts -> System.out.println(contacts));
+        long count = contactDetails.stream().filter(n -> n.getCity().equalsIgnoreCase(city)).count();
+        System.out.println("Total number of Persons in city " + city + ":" + count);
+    }
+    public void countByState() {
+        System.out.println("Enter the State Name:");
+        String state = sc.next();
+        contactDetails.stream().filter(contacts -> contacts.getState().equalsIgnoreCase(state)).forEach(contacts -> System.out.println(contacts));
+        long count = contactDetails.stream().filter(n -> n.getState().equalsIgnoreCase(state)).count();
+        System.out.println("Total number of Persons in city " + state + ":" + count);
+    }
+    /*
     Create addDetails method
     create info contact Class object
      */
